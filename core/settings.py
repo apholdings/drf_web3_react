@@ -50,8 +50,9 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'apps.user'
-    # 'apps.blog',
+    'apps.user',
+    'apps.forum',
+    'apps.category',
 ]
 
 ECOMMERCE_APPS = [
@@ -130,32 +131,32 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    "default": env.db("DATABASE_URL"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     "default": env.db("DATABASE_URL"),
+# }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:3000',
+    'http://localhost:3003',
+    'http://localhost:8003',
+    'http://127.0.0.1:8003',
+    'http://127.0.0.1:3003',
     'https://uridium.io',
     'https://vudera.s3.amazonaws.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:3000',
+    'http://localhost:3003',
+    'http://localhost:8003',
+    'http://127.0.0.1:8003',
+    'http://127.0.0.1:3003',
     'https://uridium.io',
     'https://vudera.s3.amazonaws.com',
 ]

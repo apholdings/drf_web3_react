@@ -1,6 +1,9 @@
 
 import Error404 from 'containers/errors/Error404';
 import Connect from 'containers/pages/Connect';
+import Explore from 'containers/pages/Explore';
+import Latest from 'containers/pages/Latest';
+import Top from 'containers/pages/Top';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './containers/pages/Home';
@@ -28,6 +31,9 @@ function App() {
         <Route path="*" element={<Error404/>}/>
         {/* Home Display */}
         <Route path="/" element={<Home/>}/>
+        <Route path="/latest" element={<Latest/>}/>
+        <Route path="/top" element={<Top/>}/>
+        <Route path="/explore" element={<Explore/>}/>
         {/* Authentication */}
         <Route path="/connect" element={<Connect/>}/>
       </Routes>

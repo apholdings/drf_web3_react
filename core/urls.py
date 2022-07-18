@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('api/user/', include('apps.user.urls')),
+    path('api/blog/', include('apps.forum.urls')),
+    path('api/category/', include('apps.category.urls')),
 
     # path('api/category/', include('apps.category.urls')),
     # path('api/courses/', include('apps.courses.urls')),

@@ -36,66 +36,6 @@ function Navbar({
     
     const authLinks = (
         <Fragment>
-            {/* Chat */}
-            <Link
-            to={`/messages`}
-            onMouseDown={() => setEffectMessage(true)}
-            onMouseUp={() => setEffectMessage(false)}
-            className={`${  effectMessage && "animate-click"} ${window.location.pathname == '/messages' && "text-blue-500"} hidden bg-gray-100 rounded-full p-2.5 mr-2 md:inline-flex items-center text-gray-700 hover:dark:bg-dark-second dark:bg-dark-third dark:text-dark-txt justify-center  transition ease-in-out duration-100 dark:hover:text-blue-500 hover:text-blue-500`}>
-            <ChatIcon className="md:h-5 md:w-5 h-4 w-4" aria-hidden="true" />
-            {
-                unread_messages > 0 ? 
-                    <span className="text-xs absolute z-20 top-1 mt-3 sm:mr-8 mr-4 bg-blue-500 text-white font-semibold rounded-full px-2 text-center">
-                    {unread_messages}
-                    </span> 
-                    : 
-                    <></>
-                }
-            </Link>
-
-            {/* Notifications */}
-            <Menu as="div" className="relative inline-block text-left">
-                <div>
-                <Menu.Button       
-                onMouseDown={() => setEffectHeart(true)}
-                onMouseUp={() => setEffectHeart(false)}
-                className={`${  effectHeart && "animate-click"} hidden bg-gray-100 rounded-full p-2.5 mr-2 md:inline-flex items-center text-gray-700 hover:dark:bg-dark-second dark:bg-dark-third dark:text-dark-txt justify-center  transition ease-in-out duration-100 dark:hover:text-blue-500 hover:text-blue-500`}>
-                    <BellIcon className="md:h-5 md:w-5 h-4 w-4" aria-hidden="true" />
-                    <span className="text-xs absolute z-20 top-1 sm:mr-8 mr-4 bg-blue-500 text-white font-semibold rounded-full px-2 text-center">
-                    1
-                    </span> 
-                </Menu.Button>
-                </div>
-
-                <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-                >
-                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg  dark:bg-dark-second hover:dark:bg-dark-second  ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                    <Menu.Item>
-                        {({ active }) => (
-                        <Link
-                            to="#"
-                            className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 ',
-                            'block px-4 py-2 text-sm dark:hover:bg-dark-third dark:text-dark-txt '
-                            )}
-                        >
-                            Notification 1
-                        </Link>
-                        )}
-                    </Menu.Item>
-                    </div>
-                </Menu.Items>
-                </Transition>
-            </Menu>
-
             <Menu as="div" className="relative inline-block text-left">
                 <div>
                 <Menu.Button
@@ -156,59 +96,7 @@ function Navbar({
                         </a>
                         )}
                     </Menu.Item>
-                    <Menu.Item>
-                        {({ active }) => (
-                        <Link
-                            to="/library/courses"
-                            className={classNames(
-                            window.location.pathname == "/library/courses" ? 'dark:bg-dark-main bg-gray-100 dark:text-dark-txt text-gray-900' : 'dark:hover:bg-dark-third hover:bg-gray-50 text-gray-700 dark:text-dark-txt',
-                            'block px-4 py-2 text-sm font-gilroy-semibold'
-                            )}
-                        >
-                            Wishlist
-                        </Link>
-                        )}
-                    </Menu.Item>
-                    {/* <Menu.Item>
-                        {({ active }) => (
-                        <Link
-                            to="/sales"
-                            className={classNames(
-                            window.location.pathname == "/sales" ? 'bg-gray-100 text-gray-900' : 'hover:bg-gray-50 text-gray-700',
-                            'block px-4 py-2 text-sm font-gilroy-semibold'
-                            )}
-                        >
-                            Ventas
-                        </Link>
-                        )}
-                    </Menu.Item> */}
                     
-                    <Menu.Item>
-                        {({ active }) => (
-                        <Link
-                            to="/orders"
-                            className={classNames(
-                            window.location.pathname == "/orders" ? 'dark:bg-dark-main bg-gray-100 dark:text-dark-txt text-gray-900' : 'dark:hover:bg-dark-third hover:bg-gray-50 text-gray-700 dark:text-dark-txt',
-                            'block px-4 py-2 text-sm font-gilroy-semibold'
-                            )}
-                        >
-                            Ventas
-                        </Link>
-                        )}
-                    </Menu.Item>
-                    <Menu.Item>
-                        {({ active }) => (
-                        <Link
-                            to="/purchases"
-                            className={classNames(
-                            window.location.pathname == "/purchases" ? 'dark:bg-dark-main bg-gray-100 dark:text-dark-txt text-gray-900' : 'dark:hover:bg-dark-third hover:bg-gray-50 text-gray-700 dark:text-dark-txt',
-                            'block px-4 py-2 text-sm font-gilroy-semibold'
-                            )}
-                        >
-                            Compras
-                        </Link>
-                        )}
-                    </Menu.Item>
                     
                     </div>
                     <div className="py-1">
@@ -309,7 +197,7 @@ function Navbar({
                                 document.documentElement.classList.remove('dark');
                                 window.location.reload(false)
                             }}>
-                                <i className='bx bx-sun dark:text-dark-txt hover:text-blue-500 dark:hover:text-blue-500 ml-4 md:mr-3 mr-2 inline-flex text-xl'></i>
+                                <i className='bx bx-sun dark:text-dark-txt hover:text-blue-500 dark:hover:text-blue-500 ml-4 inline-flex text-xl'></i>
                             </button>
                             : 
                             <button onClick={()=>{
@@ -317,14 +205,12 @@ function Navbar({
                                 document.documentElement.classList.add('dark');
                                 window.location.reload(false)
                             }}>
-                                <i className='bx bx-moon dark:text-dark-txt hover:text-blue-500 dark:hover:text-blue-500 ml-4 md:mr-3 mr-2 inline-flex text-xl'></i>
+                                <i className='bx bx-moon dark:text-dark-txt hover:text-blue-500 dark:hover:text-blue-500 ml-4  inline-flex text-xl'></i>
                             </button>
                         }
                         
                     </div> 
-                    <a href='http://localhost:3001' target="_blank">
-                        <i className='bx bx-wallet dark:text-dark-txt dark:hover:text-blue-500 hover:text-blue-500 md:mx-1 inline-flex text-xl'></i>
-                    </a> 
+                    
 
                     <div className="md:hidden flex">
                     {/* Search */}
@@ -388,7 +274,7 @@ function Navbar({
             </div>
 
             {/* Main Navigation */}
-            <form className="hidden md:flex items-center xl:w-8/12 md:w-6/12 w-5/12 bg-search dark:bg-dark-bg border dark:border-2 border-gray-600 dark:border-dark-third hover:border-gray-700 transition duration-300 ease-in-out rounded-full px-2 py-2">
+            <form className="hidden md:flex items-center  w-9/12 bg-search dark:bg-dark-bg border dark:border-2 border-gray-600 dark:border-dark-third hover:border-gray-700 rounded-full px-2 py-2">
                 <button className="w-1/12 text-2xl flex items-center justify-center rounded-full">
                     <SearchIcon className="h-6 w-6 text-gray-400 dark:text-dark-txt hover:text-gray-700 " aria-hidden="true" />
                 </button>
@@ -397,14 +283,14 @@ function Navbar({
             </form>
 
             {/* Right Navigation */}
-            <NavLink to='/explore' className={`${window.location.pathname == '/explore' && "text-blue-500 "} ml-6 md:mr-2 hidden md:inline-flex text-gray-800 font-gilroy-bold text-md dark:hover:text-blue-500 hover:text-blue-500 dark:text-dark-txt  cursor-pointer`}>
-                Explorar
+            <NavLink to='/latest' className={`ml-6 md:mr-2 hidden md:inline-flex text-gray-800 font-gilroy-bold text-md dark:hover:text-blue-500 hover:text-blue-500 dark:text-dark-txt  cursor-pointer`}>
+                Latest
             </NavLink>
-            <NavLink to='/resources' className={`${window.location.pathname == '/defi' && "text-blue-500"} ml-4 md:mr-2 hidden md:inline-flex text-gray-800 font-gilroy-bold text-md dark:hover:text-blue-500 hover:text-blue-500 dark:text-dark-txt  cursor-pointer`}>
-                Recursos
+            <NavLink to='/top' className={`ml-4 md:mr-2 hidden md:inline-flex text-gray-800 font-gilroy-bold text-md dark:hover:text-blue-500 hover:text-blue-500 dark:text-dark-txt  cursor-pointer`}>
+                Top
             </NavLink>
-            <NavLink to='/sell' className={`${window.location.pathname == '/defi' && "text-blue-500"} ml-4 hidden md:inline-flex text-gray-800 font-gilroy-bold text-md dark:hover:text-blue-500 hover:text-blue-500 dark:text-dark-txt  cursor-pointer`}>
-                Vender
+            <NavLink to='/explore' className={`ml-4 hidden md:inline-flex text-gray-800 font-gilroy-bold text-md dark:hover:text-blue-500 hover:text-blue-500 dark:text-dark-txt  cursor-pointer`}>
+                Explore
             </NavLink>
             <ul className="hidden md:flex mx-4 items-center justify-center">
                 {
